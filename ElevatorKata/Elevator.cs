@@ -4,28 +4,39 @@ namespace ElevatorKata
 {
     public class Elevator
     {
-        public IList<int> VisitedFloors { get; set; }
+        private IList<int> CallingFloors { get; set; }
 
-        public int CurrentFloor { get; private set; }
+        private IList<int> RequestedFloors { get; set; }
 
-        public Elevator(int floor)
+        public IList<int> VisitedFloors { get; private set; }
+
+        public Elevator()
         {
-            CurrentFloor = floor;
+            CallingFloors = new List<int>();
+            RequestedFloors = new List<int>();
+            VisitedFloors = new List<int>();
         }
 
-        public void RequestFrom(int initialFloor)
+        public void CallFrom(int initialFloor)
         {
-            CurrentFloor = initialFloor;
-            if (VisitedFloors == null)
-            {
-                VisitedFloors = new List<int>();
-            }
-            VisitedFloors.Add(initialFloor);
+            CallingFloors.Add(initialFloor);
         }
 
         public void GoTo(int destinationFloor)
         {
-            CurrentFloor = destinationFloor;
+            RequestedFloors.Add(destinationFloor);
+        }
+
+        public void Operate()
+        {
+            foreach (int callingFloor in CallingFloors)
+            {
+               VisitedFloors.Add(callingFloor);
+            }
+            foreach (int requestedFloor in RequestedFloors)
+            {
+                VisitedFloors.Add(requestedFloor);
+            }
         }
     }
 }

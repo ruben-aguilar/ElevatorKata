@@ -1,4 +1,4 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace ElevatorKata
@@ -7,46 +7,36 @@ namespace ElevatorKata
     public class ElevatorShould
     {
         [Test]
-        public void BeInitializedInGivenFloor()
+        public void RecordTheRequestingFloors()
         {
-            const int STARTING_FLOOR = 1;
+            var elevator = new Elevator();
+            elevator.CallFrom(2);
+            elevator.Operate();
 
-            var elevator = new Elevator(STARTING_FLOOR);
-
-            Assert.AreEqual(STARTING_FLOOR, elevator.CurrentFloor);
+            Assert.AreEqual(new[] { 2 }, elevator.VisitedFloors);
         }
 
         [Test]
-        public void GoToTheRequestedFloorWhenIsRequested()
+        public void RecordTheRequestedFloors()
         {
-            const int STARTING_FLOOR = 3;
-            const int FINAL_FLOOR = 1;
-            var elevator = new Elevator(STARTING_FLOOR);
-
-            elevator.RequestFrom(FINAL_FLOOR);
-
-            Assert.AreEqual(FINAL_FLOOR, elevator.CurrentFloor);
+            var elevator = new Elevator();
+            elevator.GoTo(4);
+            elevator.Operate();
+            Assert.AreEqual(new[] { 4 }, elevator.VisitedFloors);
         }
 
         [Test]
-        public void GoToTheDestinationFloorWhenIsSelected()
+        public void GoToTheRequestingFloorsAndThenToTheRequestedFloorsInOrderWhenOperates()
         {
-            const int STARTING_FLOOR = 3;
-            const int DESTINATION_FLOOR = 4;
-            var elevator = new Elevator(STARTING_FLOOR);
+            var elevator = new Elevator();
 
-            elevator.GoTo(DESTINATION_FLOOR);
+            elevator.CallFrom(0);
+            elevator.GoTo(3);
+            elevator.CallFrom(2);
+            elevator.GoTo(4);
+            elevator.Operate();
 
-            Assert.AreEqual(DESTINATION_FLOOR, elevator.CurrentFloor);
-        }
-
-        [Test]
-        public void RecordTheVisitedFloors()
-        {
-            var elevator = new Elevator(3);
-            elevator.RequestFrom(2);
-
-            Assert.AreEqual(new [] {2}, elevator.VisitedFloors);
+            Assert.AreEqual(new List<int>() { 0, 2, 3, 4 }, elevator.VisitedFloors);
         }
     }
 }

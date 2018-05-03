@@ -15,22 +15,29 @@ namespace ElevatorKata
         [Test]
         public void Test1()
         {
-            GivenAnElevatorInFloor(0);
+            GivenAnElevatorInFloor();
 
             AnUserGoesFromTo(0, 3);
             AnUserGoesFromTo(2, -1);
 
+            WhenTheElevatorOperates();
+
             ThenElevatorOpensDoorsIn(new List<int>() {0, 2, 3, -1});
         }
 
-        private void GivenAnElevatorInFloor(int floor)
+        private void WhenTheElevatorOperates()
         {
-            elevator = new Elevator(floor);
+            elevator.Operate();
+        }
+
+        private void GivenAnElevatorInFloor()
+        {
+            elevator = new Elevator();
         }
 
         private void AnUserGoesFromTo(int initialFloor, int destinationFloor)
         {
-            elevator.RequestFrom(initialFloor);
+            elevator.CallFrom(initialFloor);
             elevator.GoTo(destinationFloor);
         }
 
