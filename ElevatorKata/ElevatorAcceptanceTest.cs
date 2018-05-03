@@ -20,7 +20,7 @@ namespace ElevatorKata
             AnUserGoesFromTo(0, 3);
             AnUserGoesFromTo(2, -1);
 
-            ThenElevatorOpensDoorsIn(new[] {0, 2, 3, -1});
+            ThenElevatorOpensDoorsIn(new List<int>() {0, 2, 3, -1});
         }
 
         private void GivenAnElevatorInFloor(int floor)
@@ -34,7 +34,7 @@ namespace ElevatorKata
             elevator.GoTo(destinationFloor);
         }
 
-        private void ThenElevatorOpensDoorsIn(int[] floors)
+        private void ThenElevatorOpensDoorsIn(IList<int> floors)
         {
             Assert.AreEqual(floors, elevator.VisitedFloors);
         }

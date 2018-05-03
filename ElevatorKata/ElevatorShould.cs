@@ -39,5 +39,14 @@ namespace ElevatorKata
 
             Assert.AreEqual(DESTINATION_FLOOR, elevator.CurrentFloor);
         }
+
+        [Test]
+        public void RecordTheVisitedFloors()
+        {
+            var elevator = new Elevator(3);
+            elevator.RequestFrom(2);
+
+            Assert.AreEqual(new [] {2}, elevator.VisitedFloors);
+        }
     }
 }
