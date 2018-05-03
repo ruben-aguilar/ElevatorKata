@@ -37,6 +37,19 @@ namespace ElevatorKata
             {
                 VisitedFloors.Add(requestedFloor);
             }
+
+            RemoveConsecutiveFloors();
+        }
+
+        private void RemoveConsecutiveFloors()
+        {
+            for (int i = VisitedFloors.Count - 1; i >= 1; i--)
+            {
+                if (VisitedFloors[i] == VisitedFloors[i - 1])
+                {
+                    VisitedFloors.RemoveAt(i);
+                }
+            }
         }
     }
 }
