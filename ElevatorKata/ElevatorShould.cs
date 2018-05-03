@@ -52,5 +52,19 @@ namespace ElevatorKata
 
             Assert.AreEqual(new List<int>() { 2, 0, 1 }, elevator.VisitedFloors);
         }
+
+        [Test]
+        public void OpenTheDoorsInOrderWhenMovingInOneDirection()
+        {
+            var elevator = new Elevator();
+
+            elevator.CallFrom(-1);
+            elevator.GoTo(2);
+            elevator.CallFrom(3);
+            elevator.GoTo(6);
+            elevator.Operate();
+
+            Assert.AreEqual(new List<int>() { -1, 2, 3, 6 }, elevator.VisitedFloors);
+        }
     }
 }

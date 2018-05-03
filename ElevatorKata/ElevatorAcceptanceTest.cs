@@ -38,6 +38,19 @@ namespace ElevatorKata
             ThenElevatorOpensDoorsIn(new List<int>() { 2, 0, 1 });
         }
 
+        [Test]
+        public void Test3()
+        {
+            GivenAnElevator();
+
+            AnUserGoesFromTo(-1, 2);
+            AnUserGoesFromTo(3, 6);
+
+            WhenTheElevatorOperates();
+
+            ThenElevatorOpensDoorsIn(new List<int>() {-1, 2, 3, 6});
+        }
+
         private void WhenTheElevatorOperates()
         {
             elevator.Operate();
