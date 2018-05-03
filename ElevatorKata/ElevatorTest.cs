@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ElevatorKata
 {
-    public class Class1
+    class ElevatorShould
     {
     }
 }
