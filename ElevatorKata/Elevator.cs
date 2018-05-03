@@ -1,14 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
-
-namespace ElevatorKata
+﻿namespace ElevatorKata
 {
-    [TestFixture]
     public class Elevator
     {
+        public int[] VisitedFloors { get; }
+
+        public int CurrentFloor { get; private set; }
+
+        public Elevator(int floor)
+        {
+            CurrentFloor = floor;
+        }
+
+        public void RequestFrom(int initialFloor)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void GoTo(int destinationFloor)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
