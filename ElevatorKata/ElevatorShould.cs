@@ -27,5 +27,17 @@ namespace ElevatorKata
 
             Assert.AreEqual(FINAL_FLOOR, elevator.CurrentFloor);
         }
+
+        [Test]
+        public void GoToTheDestinationFloorWhenIsSelected()
+        {
+            const int STARTING_FLOOR = 3;
+            const int DESTINATION_FLOOR = 4;
+            var elevator = new Elevator(STARTING_FLOOR);
+
+            elevator.GoTo(DESTINATION_FLOOR);
+
+            Assert.AreEqual(DESTINATION_FLOOR, elevator.CurrentFloor);
+        }
     }
 }

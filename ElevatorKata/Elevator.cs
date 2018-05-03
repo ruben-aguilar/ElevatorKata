@@ -18,7 +18,7 @@
 
         public void GoTo(int destinationFloor)
         {
-            throw new System.NotImplementedException();
+            CurrentFloor = destinationFloor;
         }
     }
 }
