@@ -13,7 +13,7 @@
 
         public void RequestFrom(int initialFloor)
         {
-            throw new System.NotImplementedException();
+            CurrentFloor = initialFloor;
         }
 
         public void GoTo(int destinationFloor)
